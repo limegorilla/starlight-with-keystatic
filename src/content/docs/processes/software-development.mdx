@@ -1,0 +1,67 @@
+---
+title: Software Development
+description: >-
+  This process runs though the expected procedure to be followed when creating
+  new pieces of software
+subcategory: none
+template: doc
+sidebar:
+  order: 99
+  hidden: false
+  requiresAuth: false
+  banner: {}
+---
+> This is an example doc from my Companies own docs - use this as an example!
+
+
+
+Software Development at The Shore Group is intended to be as simple and agile as possible, however this guide goes over roughly what process should be stuck to when developing software.
+
+## When to use this
+
+This should be used when developing novel pieces of software. New minor features, bugfixes and more less impactful changes should not use this.
+
+## Process
+
+1. ### Scoping
+
+   Documents should be prepared and signed off by key stakeholders. These usually live on our documentation site ([docs.theshoregroup](https://docs.theshoregroup.co.uk)) - these are tracked inside [theshoregroup/workforce](https://github.com/theshoregroup/workforce) on GitHub (requires login)
+2. ### Database Design
+
+   Once - or in some cases during - a scope has been created and signed off, the database schema - or schema migration - should be created. The following tools are useful for this:
+
+   * [https://postgres.new](https://postgres.new)
+   * Drizzle (drizzle-orm)
+
+   These changes should be made on their own branch. It is okay to merge database changes in at this stage as long as they are mature, however if migrations are needed permission of the project owner needs to be sought.
+3. ### Visual Design
+
+   Now we have a scope and a schema, the proper visual design process should begin. This is usually done inside of Sketch. This may happen at the same time as the scoping to aid stakeholders in being able to visualize what the new solution may look like.
+
+   A backup of the design should be version controlled in your repository for archival purposes.
+4. ### Collaboration, Feedback & Signoff
+
+   At this point full confirmation should be collected from all stakeholders. Meetings and forums for open discussion surrounding feedback, ideas and thoughts should be had to make sure all ideas are being considered.
+
+   Once an agreement is met, the scope is set for the project. Additions or changes to the scope should not be added unless in extenuating circumstances.
+
+   At this point the project should have it's own branch created, relevant project entries added into GitHub Projects, and issues into the repositories Issues tab.
+5. ### Code
+
+   This is pretty self explanatory! Again, code should not be committed to the main branch - *other than* documentation which may be worked on in parallel on the main branch via the Web UI if preferred.
+
+   At this point, a strong focus should also be on integrating tools such as PostHog or Sentry to ensure error collection and usage metrics.
+6. ### Test
+
+   At The Shore Group we employ a "*Guard Rails, not Safety Nets*" approach to testing. Tests should be implemented if required, but in application code especially this is unlikely unless operations are significantly complex. Instead, user testing with members of staff have proven a good rule of thumb.
+
+   **These should be carried out in staging environments. Do not test in production!**
+7. ### Deploy
+
+   Finally time to deploy!
+
+   Before making any large branch merges make sure that:
+
+   * A backup has been taken of the database
+   * All pull request checks are passing
+   * At least some testing and feedback has been processed by end users.

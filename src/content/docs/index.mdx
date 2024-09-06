@@ -1,0 +1,73 @@
+---
+title: Welcome to the Company Docs
+description: Documentation for The Shore Group
+template: splash
+hero:
+  tagline: Literally the book on recruitment.
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Go to the docs
+      link: /processes/
+      icon: right-arrow
+      variant: primary
+    - text: Start Editing
+      link: /keystatic/
+      variant: "minimal"
+      icon: rocket
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## On this site
+
+<CardGrid stagger>
+  <Card title="Process Documentation" icon="information">
+    Through step-by-step guides on each step of the company - from onboarding to
+    expenses.
+  </Card>
+  <Card title="Developer Documentation" icon="github">
+    Detail on all systems, and how they work - from the API to the database.
+  </Card>
+  <Card title="IT Processes" icon="laptop">
+    Also known as who to shout at! Work out how to solve common problems and
+    where various systems are located, as well as who to contact for help.
+  </Card>
+  <Card title="Community Editing" icon="pencil">
+    Everything you see here is open to be edited! Check with IT to get
+    permission to contribute.
+  </Card>
+</CardGrid>
+
+## How to use this site
+
+This site is built with [Astro](https://astro.build/) and [Keystatic](https://keystatic.com/).
+
+This page, and any other, is written in Markdown. You can edit it by clicking the edit button below, or by editing the file in the `src/content/docs` folder.
+
+You can create "collections" into the system by editing the `keystatic.config.ts` file:
+```ts
+
+const collectionConfig = (
+  label: string,
+  path: string,
+  subcategories: string[],
+) => ...
+
+
+/** Main Keystatic Config */
+
+export default config({
+  collections: {
+    processes: collectionConfig("Processes", "processes", []),
+    guides: collectionConfig("Guides", "guides", []),
+    research: collectionConfig("Research", "research", []),
+  },
+  ...
+});
+```
+
+The `collectionConfig` configuration is setup to mimic the expected FrontMatter schema provided by Starlight.
+
+### Notable issues
+- If you are pasting a screenshot in Starlight will not assign it a random name - just `image.{png,jpg,webp}` - you will need to rename it to be unique. Do this by right clicking on the image once you have pasted it.

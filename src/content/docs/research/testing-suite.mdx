@@ -1,0 +1,69 @@
+---
+title: Testing Suite
+description: A rough guide for testers of Workforce to check and verify.
+template: doc
+lastUpdated: 2024-05-15
+sidebar:
+  label: Testing Apps
+  hidden: false
+  banner: {}
+---
+This is a guide for testers of Shore Group Applications to follow when user testing. There is no current formal process such as a form that is needed to fill out, however you should use these guidelines as a basis for your testing methodology.
+
+This guide assumes:
+
+* You have a GitHub Account with access to [The Shore Group Organisation](https://github.com/theshoregroup)
+* A Connected Vercel Account - preferably setup with GitHub.
+* I'd also recommend you install the [Vercel Extension](https://chromewebstore.google.com/detail/vercel/lahhiofdgnbcgmemekkmjnpifojdaelb) for Chrome, Edge and other Chromium-based browsers.
+
+# How this works
+
+The code for all applications is stored on GitHub, and version controlled with Git (General Information Tracker) Git works by using "branches" which you can think of as a tree. The `main` branch is the code that is currently in production. There will be any number of named branches which will be separate environments I use to develop new features, fix bugs and more.
+
+![](src/assets/images/testing-suite/Untitled-2024-05-15-0905.png)
+
+You will be brought into these branches as I finish up development to test existing functionality to make sure nothing has broke (known as a regression) and to test new functionality in a live preview environment.
+
+Preview Environments are exact replicas of the main production version - but completely disconnected so that any changes or issues are unable to affect production. You should **never** be able to see or interact with production data when using this link. You'll know your in a preview environment as the URL will be in a similar format: `https://workforce-nextjs-git-add-in-orm-theshoregroup.vercel.app/` - note the `vercel.app` domain rather than `theshoregroup.co.uk`
+
+Preview environments will be 'seeded' with dummy data which should stay the same each time. Changes you make will not be persisted.
+
+When this branch is ready for your testing I will create what is known as a Pull Request (PR) into GitHub. You can find these from the repository page on Github in the top tab.\
+!\[]\(@assets/images/testing-suite/SCR-20240515-jiql.png)
+
+All open pull requests will be listed here. You will be assigned to these as needed. You'll also get email updates as things change from GitHub
+
+# Working with Pull Requests
+
+A pull request works *almost* like comments on a post. The first one should be from the person raising the PR detailing the change, why it is being changed and what has been changed. This should give you the information needed to focus your testing.
+
+There will also be a number of comments from automated bots - such as the below:
+
+![](src/assets/images/testing-suite/SCR-20240515-jijn.png)
+
+The one most useful to you will be the Vercel one - these will list the links to the preview environments created automatically as I work. Changes I make will be automatically deployed to these preview environments and you can view the status of these deployments in the comments form the Vercel bot.
+
+# What to test for
+
+When testing you will have different categories of things you need to look for.
+
+* Functionality - Making sure the code works without errors
+* Visual (or User Experience - also known as UX) - making sure that the application looks good, all content is visible and that the layout makes sense
+* Regression - Making sure the changes don't affect existing functionality
+* Speed - This is a bit more complex - I rely on caching to make things fast so **your preview environment will always be slower than production!** But any ridiculous pauses or hitches should be noted for work.
+
+# How to report your findings
+
+The easiest method is to use the Toolbar on Vercel to comment on the application. These will allow you to add comments to physical items on screen, such as a button, modal or dialog:
+
+![](src/assets/images/testing-suite/SCR-20240515-jicc.png)
+
+You can also respond to other comments and attach screenshots - you don't need to take them yourself as the Chrome Extension (see the start of this doc) handles that for you.
+
+That will then notify and feedback to me so that I can work on improving that area.
+
+You can also use the PR itself to comment on and respond to work by using the comment box at the bottom of the screen:
+
+![](src/assets/images/testing-suite/image.png)
+
+If you need to ping me directly - or anyone else who has a GitHub account - you can do so by using the `@` symbol, followed by their username. This is more useful than the Vercel Integration if you need to talk about seed data, backend functions or similar.
